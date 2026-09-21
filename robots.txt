@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dispae.github.io/avitolog/sitemap.xml
