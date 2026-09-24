@@ -3831,11 +3831,28 @@
         description: card.dataset.desc,
         geo: card.dataset.geo || '',
         image: card.dataset.full || card.querySelector('.cm-image').getAttribute('src'),
-        alt: card.querySelector('.cm-image').getAttribute('alt')
+        alt: card.querySelector('.cm-image').getAttribute('alt'),
+        loaded: false
       }));
 
+      // предзагрузка полного фото кейса в фоне, чтобы диалог не мигал чужим кадром
+      const preloadCache = new Map();
+      function preloadCaseImage(item) {
+        if (item.loaded || preloadCache.has(item.image)) return preloadCache.get(item.image);
+        const p = new Promise((resolve) => {
+          const im = new Image();
+          im.onload = () => { item.loaded = true; resolve(); };
+          im.onerror = () => resolve(); // не блокируем показ даже если фото не загрузилось
+          im.src = item.image;
+        });
+        preloadCache.set(item.image, p);
+        return p;
+      }
+
+      let renderToken = 0;
       function updateDialog() {
         const item = cases[index];
+        const myToken = ++renderToken;
         dialogTitle.textContent = item.title;
         dialogDescription.textContent = '';
         if (item.geo) {
@@ -3846,12 +3863,22 @@
           dialogDescription.textContent = item.description;
         }
         dialogCurrent.textContent = String(index + 1).padStart(2, '0');
-        dialogImage.src = item.image;
-        dialogImage.alt = item.alt;
-        if (window.caseZoom) window.caseZoom.reset();
-        dialogImage.classList.remove('is-changing');
-        void dialogImage.offsetWidth;
-        dialogImage.classList.add('is-changing');
+
+        const applyImage = () => {
+          if (myToken !== renderToken) return; // за это время открыли/перелистнули другой кейс — не подменяем фото
+          dialogImage.src = item.image;
+          dialogImage.alt = item.alt;
+          if (window.caseZoom) window.caseZoom.reset();
+          dialogImage.classList.remove('is-changing');
+          void dialogImage.offsetWidth;
+          dialogImage.classList.add('is-changing');
+        };
+
+        if (item.loaded) {
+          applyImage();
+        } else {
+          preloadCaseImage(item).then(applyImage);
+        }
       }
 
       function move(step) {
@@ -4114,6 +4141,14 @@
 
       // честный lazy-load: грузим фото кейса только когда карточка правда рядом с экраном
       const lazyImgs = track.querySelectorAll('.cm-image[data-src]');
+      const prefetchedFull = new Set();
+      const prefetchFull = (card) => {
+        const full = card && card.dataset && card.dataset.full;
+        if (!full || prefetchedFull.has(full)) return;
+        prefetchedFull.add(full);
+        const im = new Image();
+        im.src = full; // просто прогреваем HTTP-кэш браузера полноразмерным фото кейса
+      };
       if ('IntersectionObserver' in window) {
         const imgObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
@@ -4122,11 +4157,12 @@
             img.src = img.dataset.src;
             img.removeAttribute('data-src');
             imgObserver.unobserve(img);
+            prefetchFull(img.closest('.cm-card'));
           });
         }, { rootMargin: '600px 0px' });
         lazyImgs.forEach((img) => imgObserver.observe(img));
       } else {
-        lazyImgs.forEach((img) => { img.src = img.dataset.src; });
+        lazyImgs.forEach((img) => { img.src = img.dataset.src; prefetchFull(img.closest('.cm-card')); });
       }
 
       const S = { pos: 0, cur: 0, vel: 0, size: 1, live: false, hover: false, user: false, down: false, drag: false, focus: false };
