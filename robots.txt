@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dispae.github.io/avitolog/sitemap.xml
+Sitemap: https://prostoavitolog.ru/sitemap.xml
