@@ -3851,7 +3851,7 @@
       function dismissDialog() {
         dialog.close();
         document.body.classList.remove('locked');
-        if (lastTrigger) lastTrigger.focus();
+        if (lastTrigger) { try { lastTrigger.focus({ preventScroll: true }); } catch (e) {} }
       }
 
       closeDialog.addEventListener('click', dismissDialog);
@@ -3990,7 +3990,7 @@
         if (window.worksZoom && window.worksZoom.busy()) return;
         if (Math.abs(d) > 48) show(d > 0 ? i - 1 : i + 1);
       }, { passive: true });
-      dlg.addEventListener('close', () => { if (opener) opener.focus(); });
+      dlg.addEventListener('close', () => { if (opener) { try { opener.focus({ preventScroll: true }); } catch (e) {} } });
     })();
   </script>
   <script>
@@ -4088,7 +4088,10 @@
       let raf = 0, last = 0, sx = 0, sp = 0, pid = -1, lp = 0, lt = 0, sup = false, glide = null;
 
       const apply = () => {
-        if (S.size > 0) S.pos = ((S.pos % S.size) + S.size) % S.size;
+        if (S.size > 0) {
+          while (S.pos < S.size) S.pos += S.size;
+          while (S.pos >= S.size * 2) S.pos -= S.size;
+        }
         track.style.transform = 'translate3d(' + (-S.pos).toFixed(2) + 'px,0,0)';
       };
       const measure = () => {
@@ -4166,7 +4169,8 @@
 
       const step = () => { const c = first.querySelectorAll('.cm-card'); return c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : 466; };
       const slide = (dir) => {
-        glide = { from: S.pos, to: (glide ? glide.to : S.pos) + dir * step(), t0: performance.now(), dur: 700 };
+        if (glide) return;
+        glide = { from: S.pos, to: S.pos + dir * step(), t0: performance.now(), dur: 700 };
         S.vel = 0; start();
       };
       const prevBtn = wrap.querySelector('.cm-prev'), nextBtn = wrap.querySelector('.cm-next');
