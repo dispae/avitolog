@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Даниил Ионов — авитолог</title>
+<title>Авитолог. Узнайте за 0&nbsp;₽, будут ли у вас заявки</title>
 <meta name="description" content="Даниил Ионов — авитолог. Настраиваю Авито как канал продаж: реальные кейсы с цифрами из кабинета, разбор ниши и честная оценка потенциала до старта работ.">
 <meta name="theme-color" content="#020813">
 <link rel="canonical" href="https://prostoavitolog.ru/">
@@ -2764,6 +2764,25 @@
       .tb-link .social-icon { width: 21px; height: 21px; flex-basis: 21px; }
     }
     @media (max-width: 350px) { .tb-cap { display: none; } }
+    /* подпись «авитолог · маркетолог» под именем + на телефоне каналы в одной капсуле «Каналы (tg)(max)» */
+    .tb-id { display: flex; flex-direction: column; gap: 4px; min-width: 0; line-height: 1; }
+    .tb-role { color: var(--lime); font-size: .86rem; font-weight: 700; letter-spacing: 0; }
+    .tb-chans { display: flex; align-items: center; gap: 10px; }
+    @media (max-width: 680px) {
+      .tb-role { font-size: .76rem; }
+      .tb-chans { gap: 4px; padding: 4px 4px 4px 12px; border: 1px solid rgba(255, 255, 255, .16); border-radius: 999px; background: rgba(255, 255, 255, .06); }
+      .tb-chans .tb-cap { display: block; margin: 0 4px 0 0; color: rgba(255, 255, 255, .72); font-size: .76rem; font-weight: 750; }
+      .tb-link { width: 36px; min-height: 36px; }
+      .tb-link .social-icon { width: 19px; height: 19px; flex-basis: 19px; }
+    }
+    @media (max-width: 374px) {
+      .tb-brand { gap: 8px; }
+      .tb-role { font-size: .68rem; }
+      .tb-chans { padding: 3px 3px 3px 9px; }
+      .tb-chans .tb-cap { font-size: .7rem; margin-right: 3px; }
+      .tb-link { width: 34px; min-height: 34px; }
+    }
+    @media (max-width: 350px) { .tb-chans { padding-left: 3px; } .tb-chans .tb-cap { display: none; } }
 
     /* ===== HERO: кнопки Telegram и MAX «оживают» по очереди ===== */
     .hero-actions .button.ghost { position: relative; }
@@ -3316,8 +3335,9 @@
     <div class="container topbar-inner">
       <a class="tb-brand" href="https://t.me/prostoAvitolog" data-goal="channel" data-place="top_brand" target="_blank" rel="noopener noreferrer" aria-label="Telegram-канал Даниила">
         <span class="tb-logo" aria-hidden="true"><img src="assets/img/avatar.webp" alt="" width="240" height="240"></span>
-        <span class="tb-name">Даниил Ионов</span>
+        <span class="tb-id"><span class="tb-name">Даниил Ионов</span><span class="tb-role">авитолог · маркетолог</span></span>
       </a>
+      <div class="tb-chans">
       <span class="tb-cap" aria-hidden="true">Каналы</span>
       <a class="tb-link tg" href="https://t.me/prostoAvitolog" data-goal="channel" data-place="top_tg" target="_blank" rel="noopener noreferrer" aria-label="Telegram-канал Даниила">
         <img class="social-icon telegram-icon" src="assets/img/icon-telegram-a0fe0.webp" alt="" width="22" height="22"><span>Канал в Telegram</span>
@@ -3325,6 +3345,7 @@
       <a class="tb-link mx" href="https://max.ru/channel_lidogenerator" data-goal="channel_max" data-place="top_max" target="_blank" rel="noopener noreferrer" aria-label="Канал Даниила в MAX">
         <img class="social-icon max-icon" src="assets/img/icon-max-75523.webp" alt="" width="22" height="22"><span>Канал в MAX</span>
       </a>
+      </div>
     </div>
   </header>
 
