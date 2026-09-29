@@ -1774,6 +1774,7 @@
       transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
     }
     .work-tile img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .5s cubic-bezier(.16,1,.3,1); }
+    .work-tile img:not(.is-loaded) { background: linear-gradient(100deg, #111d31 30%, #1b2c48 50%, #111d31 70%) 0 0 / 300% 100%; animation: cmShimmer 1.3s linear infinite; }
     .work-tile::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
       background: linear-gradient(to top, rgba(8,13,22,.72) 0%, rgba(8,13,22,0) 42%);
@@ -1811,6 +1812,7 @@
     .carousel-viewport { touch-action: pan-y; }
     @media (prefers-reduced-motion: reduce) {
       .work-tile, .work-tile img { transition: none; }
+      .work-tile img:not(.is-loaded) { animation: none; }
       .work-tile:hover, .work-tile:focus-visible { transform: none; }
     }
     /* ===== Шапка на телефоне: кнопки Telegram и MAX (иконки) ===== */
@@ -2035,6 +2037,8 @@
     .cm-img { display: block; overflow: hidden; }
     .cm-image { display: block; width: 100%; height: auto; aspect-ratio: 1800 / 1344; object-fit: cover; transition: transform .9s cubic-bezier(.16,1,.3,1); }
     .cm-card:hover .cm-image { transform: scale(1.05); }
+    .cm-image:not(.is-loaded) { background: linear-gradient(100deg, #111d31 30%, #1b2c48 50%, #111d31 70%) 0 0 / 300% 100%; animation: cmShimmer 1.3s linear infinite; }
+    @keyframes cmShimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
     .cm-body { display: grid; justify-items: start; gap: 10px; padding: 20px 26px 26px; }
     .cm-per { padding: 6px 13px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; color: var(--muted); font-size: .8rem; font-weight: 700; line-height: 1.2; }
     .cm-num { display: flex; align-items: baseline; gap: 10px; font-size: 3.5rem; font-weight: 950; letter-spacing: -.06em; word-spacing: .1em; line-height: 1; white-space: nowrap; }
@@ -2049,7 +2053,7 @@
       .cm-num { font-size: 2.7rem; } .cm-num small { font-size: .9rem; }
       .cm-cost b { font-size: 1.35rem; } .cm-cost small { font-size: .82rem; }
     }
-    @media (prefers-reduced-motion: reduce) { .cm-card, .cm-image { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .cm-card, .cm-image { transition: none; } .cm-image:not(.is-loaded) { animation: none; } }
   
     /* ===== Весь сайт тёмный: «Коротко обо мне» и «Креативы» ===== */
     body { background: var(--ink); }
@@ -3548,16 +3552,16 @@
           <p class="section-note">Фото для объявлений. Нажмите на любое, чтобы увеличить.</p>
         </div>
         <div class="works-grid">
-          <button class="work-tile" type="button" data-work="0" aria-label="Открыть крупнее: PUHTO — мусорные контейнеры"><img src="assets/img/work-01-puhto-musornye-konteyner.webp" alt="PUHTO — мусорные контейнеры" loading="lazy" decoding="async" width="1200" height="900"><span class="work-chip">Вывоз мусора</span></button>
-          <button class="work-tile" type="button" data-work="1" aria-label="Открыть крупнее: Ремонт французов"><img src="assets/img/work-02-remont-francuzov.webp" alt="Ремонт французов" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Автосервис</span></button>
-          <button class="work-tile" type="button" data-work="2" aria-label="Открыть крупнее: Демонтаж домов и строений"><img src="assets/img/work-03-demontazh-domov-i-stroen.webp" alt="Демонтаж домов и строений" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Демонтаж</span></button>
-          <button class="work-tile" type="button" data-work="3" aria-label="Открыть крупнее: BMW заговорил по-русски"><img src="assets/img/work-04-bmw-zagovoril-po-russki.webp" alt="BMW заговорил по-русски" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Русификация</span></button>
-          <button class="work-tile" type="button" data-work="4" aria-label="Открыть крупнее: Производство противней"><img src="assets/img/work-05-proizvodstvo-protivney.webp" alt="Производство противней" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Производство</span></button>
-          <button class="work-tile" type="button" data-work="5" aria-label="Открыть крупнее: Аэродромные плиты"><img src="assets/img/work-06-aerodromnye-plity.webp" alt="Аэродромные плиты" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Стройка</span></button>
-          <button class="work-tile" type="button" data-work="6" aria-label="Открыть крупнее: Nissan Qashqai, X-Trail"><img src="assets/img/work-07-nissan-qashqai-x-trail.webp" alt="Nissan Qashqai, X-Trail" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Русификация</span></button>
-          <button class="work-tile" type="button" data-work="7" aria-label="Открыть крупнее: Доставка бетона"><img src="assets/img/work-08-dostavka-betona.webp" alt="Доставка бетона" loading="lazy" decoding="async" width="1200" height="900"><span class="work-chip">Бетон</span></button>
-          <button class="work-tile" type="button" data-work="8" aria-label="Открыть крупнее: Вывоз грунта самосвалами"><img src="assets/img/work-09-vyvoz-grunta-samosvalami.webp" alt="Вывоз грунта самосвалами" loading="lazy" decoding="async" width="1200" height="900"><span class="work-chip">Спецтехника</span></button>
-          <button class="work-tile" type="button" data-work="9" aria-label="Открыть крупнее: Грузоперевозки межгород"><img src="assets/img/work-10-gruzoperevozki-mezhgorod.webp" alt="Грузоперевозки межгород" loading="lazy" decoding="async" width="1024" height="768"><span class="work-chip">Грузоперевозки</span></button>
+          <button class="work-tile" type="button" data-work="0" aria-label="Открыть крупнее: PUHTO — мусорные контейнеры"><img data-src="assets/img/work-01-puhto-musornye-konteyner.webp" alt="PUHTO — мусорные контейнеры" decoding="async" width="1200" height="900"><span class="work-chip">Вывоз мусора</span></button>
+          <button class="work-tile" type="button" data-work="1" aria-label="Открыть крупнее: Ремонт французов"><img data-src="assets/img/work-02-remont-francuzov.webp" alt="Ремонт французов" decoding="async" width="1024" height="768"><span class="work-chip">Автосервис</span></button>
+          <button class="work-tile" type="button" data-work="2" aria-label="Открыть крупнее: Демонтаж домов и строений"><img data-src="assets/img/work-03-demontazh-domov-i-stroen.webp" alt="Демонтаж домов и строений" decoding="async" width="1024" height="768"><span class="work-chip">Демонтаж</span></button>
+          <button class="work-tile" type="button" data-work="3" aria-label="Открыть крупнее: BMW заговорил по-русски"><img data-src="assets/img/work-04-bmw-zagovoril-po-russki.webp" alt="BMW заговорил по-русски" decoding="async" width="1024" height="768"><span class="work-chip">Русификация</span></button>
+          <button class="work-tile" type="button" data-work="4" aria-label="Открыть крупнее: Производство противней"><img data-src="assets/img/work-05-proizvodstvo-protivney.webp" alt="Производство противней" decoding="async" width="1024" height="768"><span class="work-chip">Производство</span></button>
+          <button class="work-tile" type="button" data-work="5" aria-label="Открыть крупнее: Аэродромные плиты"><img data-src="assets/img/work-06-aerodromnye-plity.webp" alt="Аэродромные плиты" decoding="async" width="1024" height="768"><span class="work-chip">Стройка</span></button>
+          <button class="work-tile" type="button" data-work="6" aria-label="Открыть крупнее: Nissan Qashqai, X-Trail"><img data-src="assets/img/work-07-nissan-qashqai-x-trail.webp" alt="Nissan Qashqai, X-Trail" decoding="async" width="1024" height="768"><span class="work-chip">Русификация</span></button>
+          <button class="work-tile" type="button" data-work="7" aria-label="Открыть крупнее: Доставка бетона"><img data-src="assets/img/work-08-dostavka-betona.webp" alt="Доставка бетона" decoding="async" width="1200" height="900"><span class="work-chip">Бетон</span></button>
+          <button class="work-tile" type="button" data-work="8" aria-label="Открыть крупнее: Вывоз грунта самосвалами"><img data-src="assets/img/work-09-vyvoz-grunta-samosvalami.webp" alt="Вывоз грунта самосвалами" decoding="async" width="1200" height="900"><span class="work-chip">Спецтехника</span></button>
+          <button class="work-tile" type="button" data-work="9" aria-label="Открыть крупнее: Грузоперевозки межгород"><img data-src="assets/img/work-10-gruzoperevozki-mezhgorod.webp" alt="Грузоперевозки межгород" decoding="async" width="1024" height="768"><span class="work-chip">Грузоперевозки</span></button>
         </div>
       </div>
     </section>
@@ -4046,7 +4050,7 @@
         i = (n + tiles.length) % tiles.length;
         const im = tiles[i].querySelector('img');
         if (window.worksZoom) window.worksZoom.reset();
-        img.src = im.src; img.alt = im.alt;
+        img.src = im.src || im.dataset.src || ''; img.alt = im.alt;
         dlg.setAttribute('aria-label', im.alt);
         cur.textContent = pad(i + 1);
       };
@@ -4070,6 +4074,25 @@
         if (Math.abs(d) > 48) show(d > 0 ? i - 1 : i + 1);
       }, { passive: true });
       dlg.addEventListener('close', () => { if (opener) { try { opener.focus({ preventScroll: true }); } catch (e) {} } });
+    })();
+
+    /* Картинки блока «Креативы»: грузим, когда блок подходит к экрану, а не сразу —
+       иначе на медленном интернете они забирают скорость у картинок кейсов, которые выше */
+    (() => {
+      const imgs = Array.from(document.querySelectorAll('.work-tile img[data-src]'));
+      if (!imgs.length) return;
+      const load = (im) => {
+        if (!im.dataset.src) return;
+        const done = () => im.classList.add('is-loaded');
+        im.addEventListener('load', done, { once: true });
+        im.addEventListener('error', done, { once: true });
+        im.src = im.dataset.src; im.removeAttribute('data-src');
+      };
+      if (!('IntersectionObserver' in window)) { imgs.forEach(load); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px 600px 0px' });
+      imgs.forEach((im) => io.observe(im));
     })();
   </script>
   <script>
@@ -4162,30 +4185,48 @@
       }
       root.classList.add('cm-on');
 
-      // честный lazy-load: грузим фото кейса только когда карточка правда рядом с экраном
-      const lazyImgs = track.querySelectorAll('.cm-image[data-src]');
-      const prefetchedFull = new Set();
-      const prefetchFull = (card) => {
-        const full = card && card.dataset && card.dataset.full;
-        if (!full || prefetchedFull.has(full)) return;
-        prefetchedFull.add(full);
-        const im = new Image();
-        im.src = full; // просто прогреваем HTTP-кэш браузера полноразмерным фото кейса
+      // Превью кейсов. Раньше каждое грузилось, только когда карточка уже въехала в ленту, — человек видел пустые карточки.
+      // Теперь все 12 превью грузятся сразу после первого экрана (или раньше, если человек уже листает к кейсам),
+      // а большие фото для окна кейса — только потом, по одному, чтобы не отнимать скорость у превью.
+      const lazyImgs = Array.from(track.querySelectorAll('.cm-image[data-src]'));
+      lazyImgs.forEach((img) => {
+        const done = () => img.classList.add('is-loaded');
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      });
+      const thumbUrls = [...new Set(lazyImgs.map((img) => img.dataset.src))];
+      const fullUrls = [...new Set(Array.from(first.querySelectorAll('.cm-card')).map((c) => c.dataset.full).filter(Boolean))];
+      const loadUrl = (url) => new Promise((resolve) => { const im = new Image(); im.onload = im.onerror = () => resolve(); im.src = url; });
+
+      let thumbsDone = false, sectionSeen = false, fullStarted = false;
+      const startFull = () => {
+        if (fullStarted || !thumbsDone || !sectionSeen) return;
+        fullStarted = true;
+        // по одному, в порядке ленты — в каждый момент качается не больше одного большого фото
+        fullUrls.reduce((chain, url) => chain.then(() => loadUrl(url)), Promise.resolve());
       };
+      let thumbsStarted = false;
+      const startThumbs = () => {
+        if (thumbsStarted) return;
+        thumbsStarted = true;
+        lazyImgs.forEach((img) => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+        Promise.all(thumbUrls.map(loadUrl)).then(() => { thumbsDone = true; startFull(); });
+      };
+
+      if (document.readyState === 'complete') startThumbs();
+      else window.addEventListener('load', startThumbs, { once: true });
       if ('IntersectionObserver' in window) {
-        const imgObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-            imgObserver.unobserve(img);
-            prefetchFull(img.closest('.cm-card'));
-          });
-        }, { rootMargin: '600px 0px' });
-        lazyImgs.forEach((img) => imgObserver.observe(img));
+        // человек листает к кейсам раньше, чем догрузился первый экран, — начинаем сразу
+        const nearIo = new IntersectionObserver((entries) => {
+          if (entries.some((e) => e.isIntersecting)) { startThumbs(); nearIo.disconnect(); }
+        }, { rootMargin: '0px 0px 120% 0px' });
+        nearIo.observe(root);
+        const seenIo = new IntersectionObserver((entries) => {
+          if (entries.some((e) => e.isIntersecting)) { sectionSeen = true; startFull(); seenIo.disconnect(); }
+        });
+        seenIo.observe(root);
       } else {
-        lazyImgs.forEach((img) => { img.src = img.dataset.src; prefetchFull(img.closest('.cm-card')); });
+        startThumbs(); sectionSeen = true;
       }
 
       const S = { pos: 0, cur: 0, vel: 0, size: 1, live: false, hover: false, user: false, down: false, drag: false, focus: false };
