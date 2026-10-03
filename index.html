@@ -3819,8 +3819,10 @@
 
   <script>
     /* Счётчики целей. Впишите номер счётчика Яндекс.Метрики в METRIKA_ID — и цели пойдут сами.
-       Цели в Метрике (тип «JavaScript-событие»): tg_click, max_click, channel_click, channel_max_click, cases_click, case_open.
-       Откуда клик (шапка, первый экран, последний блок…) приходит в параметре визита «place». */
+       Цели в Метрике (тип «JavaScript-событие»): tg_click, max_click, channel_max_click, cases_click, case_open.
+       Откуда клик (шапка, первый экран, последний блок…) приходит в параметре визита «place».
+       ВАЖНО: цели dm_click и channel_click шлёт отдельный скрипт в самом конце страницы (последний перед закрывающим тегом body).
+       channel_click здесь НЕ отправляем — иначе каждый клик по каналу засчитается дважды. */
     (function () {
       var METRIKA_ID = 112965215;
       if (METRIKA_ID) {
@@ -3834,7 +3836,10 @@
       };
       document.addEventListener('click', function (ev) {
         var a = ev.target && ev.target.closest ? ev.target.closest('a[data-goal]') : null;
-        if (a) window.trackGoal(a.getAttribute('data-goal') + '_click', { place: a.getAttribute('data-place') || '' });
+        if (!a) return;
+        var goal = a.getAttribute('data-goal') + '_click';
+        if (goal === 'channel_click') return; // её считает скрипт в конце страницы — без дубля
+        window.trackGoal(goal, { place: a.getAttribute('data-place') || '' });
       }, true);
     })();
   </script>
@@ -4471,5 +4476,17 @@
       });
     })();
   </script>
+<script>
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a');
+  if (!a || !window.ym) return;
+  var h = a.href;
+  if (h.indexOf('t.me/dispae') > -1 || h.indexOf('max.ru/u/') > -1) {
+    ym(112965215, 'reachGoal', 'dm_click');
+  } else if (h.indexOf('t.me/prostoAvitolog') > -1 || h.indexOf('max.ru/channel_lidogenerator') > -1) {
+    ym(112965215, 'reachGoal', 'channel_click');
+  }
+});
+</script>
 </body>
 </html>
