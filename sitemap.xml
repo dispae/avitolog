@@ -2,6 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://prostoavitolog.ru/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://prostoavitolog.ru/detailing/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://prostoavitolog.ru/kuzovnoj-remont/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://prostoavitolog.ru/avtoservis/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://prostoavitolog.ru/vyvoz-musora/</loc>
+    <lastmod>2026-10-11</lastmod>
   </url>
 </urlset>
