@@ -1,12 +1,13 @@
 /* ===== Эффекты (градиент, кнопки, анимации текста) ===== */
 
 /* ---------- Градиент на первом экране ---------- */
-.fxp-grad { position: absolute; inset: 0; z-index: -2; pointer-events: none;
+/* градиент плавно проявляется поверх обычного фона, когда уже нарисован первый кадр — без рывка */
+.fxp-grad { position: absolute; inset: 0; z-index: -2; pointer-events: none; opacity: 0; transition: opacity 1.6s ease;
   -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
+.fxp-grad.is-on { opacity: 1; }
 .fxp-grad-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 /* слева чуть темнее, чтобы заголовок читался */
 .fxp-grad::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2, 8, 19, .4) 0%, rgba(2, 8, 19, .12) 42%, transparent 62%); }
-:root:not([data-fxp-g="0"]) .hero, :root:not([data-fxp-g="0"]) .nh { background: #020813; }
 .fxp-grad--fallback { background:
   radial-gradient(38% 52% at 68% 46%, rgba(31, 128, 255, .45), transparent 70%),
   radial-gradient(30% 40% at 86% 18%, rgba(70, 168, 255, .25), transparent 70%),

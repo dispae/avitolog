@@ -44,7 +44,8 @@ float grain=fract(sin(dot(uv,vec2(12.9898,78.233)))*43758.5453+u_time);col+=(gra
     canvas.className = 'fxp-grad-canvas';
     host.appendChild(canvas);
     const gl = canvas.getContext('webgl', { antialias: false, depth: false, stencil: false, powerPreference: 'low-power' });
-    if (!gl) { host.classList.add('fxp-grad--fallback'); return; }
+    const show = () => requestAnimationFrame(() => requestAnimationFrame(() => host.classList.add('is-on')));
+    if (!gl) { host.classList.add('fxp-grad--fallback'); show(); return; }
     const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
     const prog = gl.createProgram();
     gl.attachShader(prog, sh(gl.VERTEX_SHADER, VERT));
@@ -86,7 +87,7 @@ float grain=fract(sin(dot(uv,vec2(12.9898,78.233)))*43758.5453+u_time);col+=(gra
     new ResizeObserver(resize).observe(host);
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); }).observe(host);
     document.addEventListener('visibilitychange', sync);
-    resize(); sync();
+    resize(); sync(); show();
   }
 
   const GRADIENTS = {
