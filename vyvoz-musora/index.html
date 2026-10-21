@@ -2754,7 +2754,8 @@
   <style>
     /* ===== Ниши с 1–2 кейсами ===== */
     .nc-grid.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .nc-split { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 18px 28px; align-items: center; }
+    .nc-split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px 28px; align-items: center; }
+    @media (min-width: 961px) { .nc-split { grid-template-columns: minmax(0, 520px) minmax(0, 1fr); } }
     .nc-split .nc-grid { grid-template-columns: minmax(0, 1fr); }
     .nc-split .nc-note { margin: 0; }
     #case-dialog.one .dlg-nav { display: none; }
