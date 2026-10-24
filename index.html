@@ -426,6 +426,8 @@
 
     .section { padding: 110px 0; }
     .quiz-section { color: #fff; }
+    .quiz-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+    .quiz-note { margin: 0; color: rgba(255,255,255,.62); font-size: .9rem; }
     .quiz-section .section-title { max-width: 900px; font-size: clamp(2rem, 4vw, 3.4rem); }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 44px; }
     .kicker { margin-bottom: 13px; font-size: .82rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
@@ -2880,8 +2882,11 @@
         <div class="section-head">
           <h2 class="section-title" id="quiz-title">Есть ли спрос на Авито в вашей нише? <span class="hl">Узнайте за 1 минуту</span></h2>
         </div>
-        <div data-marquiz-id="6adbc59e2c250e000f7ade87"></div>
-        <script>(function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Inline', {id: '6adbc59e2c250e000f7ade87', buttonText: 'Проверить спрос на Авито', bgColor: '#25e07c', textColor: '#08111d', rounded: false, shadow: 'rgba(37, 224, 124, 0.5)', blicked: true, fixed: false, buttonOnMobile: false, disableOnMobile: false, symbolIconId: 'native', symbolMode: 'icon', emojiPack: 'standard', fullWidth: true})</script>
+        <div class="quiz-cta">
+          <div data-marquiz-id="6adbc59e2c250e000f7ade87"></div>
+          <script>(function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Button', {id: '6adbc59e2c250e000f7ade87', buttonText: 'Проверить спрос на Авито', bgColor: '#25e07c', textColor: '#08111d', rounded: true, shadow: 'rgba(37, 224, 124, 0.5)', blicked: true, fixed: false, disableOnMobile: false, symbolIconId: 'native', symbolMode: 'icon', emojiPack: 'standard'})</script>
+          <p class="quiz-note">6 вопросов · около минуты</p>
+        </div>
       </div>
     </section>
 
