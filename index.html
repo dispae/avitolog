@@ -425,6 +425,8 @@
 
 
     .section { padding: 110px 0; }
+    .quiz-section { color: #fff; }
+    .quiz-section .section-title { max-width: 900px; font-size: clamp(2rem, 4vw, 3.4rem); }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 44px; }
     .kicker { margin-bottom: 13px; font-size: .82rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
     .section-title { max-width: 820px; margin-bottom: 0; font-size: clamp(2.6rem, 5vw, 5.2rem); font-weight: 950; letter-spacing: -.065em; text-wrap: balance; }
@@ -1664,7 +1666,7 @@
     }
 
     /* ===== Разделители между блоками ===== */
-    .cm-section, .intro-section, .works-section, .why-section {
+    .cm-section, .intro-section, .works-section, .quiz-section, .why-section {
       --sep-w: min(calc(100% - 40px), var(--max));
       
       background-size: 280px 36px, 180px 2px, var(--sep-w) 1px;
@@ -1672,7 +1674,7 @@
       background-repeat: no-repeat;
     }
     @media (max-width: 680px) {
-      .cm-section, .intro-section, .works-section, .why-section { --sep-w: calc(100% - 24px); background-size: 220px 30px, 130px 2px, var(--sep-w) 1px; background-position: 50% -15px, 50% 0, 50% 0; }
+      .cm-section, .intro-section, .works-section, .quiz-section, .why-section { --sep-w: calc(100% - 24px); background-size: 220px 30px, 130px 2px, var(--sep-w) 1px; background-position: 50% -15px, 50% 0, 50% 0; }
     }
 
     /* ===== Акценты: у каждого блока свой оттенок ===== */
@@ -1680,9 +1682,10 @@
     .intro-section { --acc-a: #1ea1ff; --acc-b: #8fd6ff; --acc-glow: rgba(30, 161, 255, .36); }
     .works-section { --acc-a: #16bee4; --acc-b: #25e0b0; --acc-glow: rgba(22, 190, 228, .34); }
     .trust-section { --acc-a: #25e07c; --acc-b: #1ea1ff; --acc-glow: rgba(37, 224, 124, .3); }
+    .quiz-section  { --acc-a: #1ea1ff; --acc-b: #25e07c; --acc-glow: rgba(30, 161, 255, .34); }
     .why-section   { --acc-a: #1ea1ff; --acc-b: #25e07c; --acc-glow: rgba(30, 161, 255, .34); }
 
-    .cm-section, .intro-section, .works-section, .why-section {
+    .cm-section, .intro-section, .works-section, .quiz-section, .why-section {
       background-image:
         radial-gradient(ellipse 130px 18px at 50% 0, var(--acc-glow), transparent 72%),
         linear-gradient(90deg, transparent, var(--acc-a) 28%, var(--acc-b) 50%, var(--acc-a) 72%, transparent),
@@ -1745,6 +1748,7 @@
     .cm-section { padding-top: var(--sep-gap); padding-bottom: calc(var(--sep-gap) - 24px); }
     .intro-section { padding-top: var(--sep-gap); padding-bottom: var(--sep-gap); }
     .works-section { padding-top: var(--sep-gap); }
+    .quiz-section { padding-top: var(--sep-gap); padding-bottom: var(--sep-gap); }
     .trust-section { padding-bottom: var(--sep-gap); }
     .why-section, .why-section.wc { padding-top: var(--sep-gap); }
 
@@ -2568,6 +2572,28 @@
     }
   </style>
 <link rel="stylesheet" href="assets/css/effects.css">
+<!-- Marquiz script start -->
+<script>
+(function(w, d, s, o){
+  var j = d.createElement(s); j.async = true; j.src = 'https://script.marquiz.ru/v2.js';j.onload = function() {
+    if (document.readyState !== 'loading') Marquiz.init(o);
+    else document.addEventListener("DOMContentLoaded", function() {
+      Marquiz.init(o);
+    });
+  };
+  d.head.insertBefore(j, d.head.firstElementChild);
+})(window, document, 'script', {
+    host: 'https://quiz.marquiz.ru',
+    region: 'ru',
+    id: '6adbc59e2c250e000f7ade87',
+    autoOpen: false,
+    autoOpenFreq: 'once',
+    openOnExit: false,
+    disableOnMobile: false
+  }
+);
+</script>
+<!-- Marquiz script end -->
 </head>
 <body>
 <noscript><div><img src="https://mc.yandex.ru/watch/112965215" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -2843,6 +2869,16 @@
             <div><h3>Честная оценка</h3><p>Если в вашей нише будет сложно получить результат — скажу об этом до старта.</p></div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz" aria-labelledby="quiz-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" id="quiz-title">Есть ли спрос на Авито в вашей нише? <span class="hl">Узнайте за 1 минуту</span></h2>
+        </div>
+        <div data-marquiz-id="6adbc59e2c250e000f7ade87"></div>
+        <script>(function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Inline', {id: '6adbc59e2c250e000f7ade87', buttonText: 'Проверить спрос на Авито', bgColor: '#25e07c', textColor: '#08111d', rounded: false, shadow: 'rgba(37, 224, 124, 0.5)', blicked: true, fixed: false, buttonOnMobile: false, disableOnMobile: false, symbolIconId: 'native', symbolMode: 'icon', emojiPack: 'standard', fullWidth: true})</script>
       </div>
     </section>
 
