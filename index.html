@@ -4,24 +4,24 @@
 <meta charset="utf-8">
 <script>/* страница всегда открывается с начала; плавная прокрутка — только по ссылкам внутри страницы */(function(){try{document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey)return;var id=decodeURIComponent(a.getAttribute('href').slice(1)),t=id&&document.getElementById(id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});if(a.classList.contains('skip-link')){if(!t.hasAttribute('tabindex'))t.setAttribute('tabindex','-1');t.focus({preventScroll:true})}});var n=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];if(n&&n.type!=='navigate')return;var H=history,sr='scrollRestoration' in H;if(sr)H.scrollRestoration='manual';var d=document.documentElement,moved=false,done=false,fin=function(){if(!done){done=true;if(sr)H.scrollRestoration='auto'}};['wheel','touchstart','keydown','pointerdown'].forEach(function(e){addEventListener(e,function(){moved=true;fin()},{passive:true,capture:true})});var anchor=function(){var h=location.hash.slice(1);if(!h)return false;try{return!!document.getElementById(decodeURIComponent(h))}catch(e){return false}};var top=function(){if(moved||anchor()||!(window.pageYOffset||d.scrollTop))return;window.scrollTo(0,0)};top();document.addEventListener('DOMContentLoaded',top);addEventListener('load',function(){top();requestAnimationFrame(top);setTimeout(top,150);var until=Date.now()+1500,h=function(){if(Date.now()<until)top();else{removeEventListener('scroll',h);fin()}};addEventListener('scroll',h,{passive:true});setTimeout(fin,1600)})}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Авитолог. Узнайте за 0&nbsp;₽, будут ли у вас заявки</title>
-<meta name="description" content="Частный авитолог, не агентство. Настраиваю и веду Авито как канал заявок. Бесплатно оценю нишу до старта работ и покажу кейсы с цифрами.">
+<title>Авитолог Даниил Ионов — проверю спрос на ваши услуги на Авито</title>
+<meta name="description" content="Частный авитолог, не агентство. Настраиваю и веду Авито как канал заявок. До старта проверю спрос в вашей нише и покажу кейсы с цифрами.">
 <meta name="theme-color" content="#020813">
 <meta name="yandex-verification" content="eb885e0e94be250d" />
 <link rel="canonical" href="https://prostoavitolog.ru/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Даниил Ионов — авитолог">
-<meta property="og:title" content="Авитолог. Узнайте за 0&nbsp;₽, будут ли у вас заявки">
-<meta property="og:description" content="Бесплатно разберу вашу нишу и честно скажу, будут ли заявки с Авито. Кейсы с цифрами из кабинета.">
+<meta property="og:title" content="Авитолог Даниил Ионов — проверю спрос на ваши услуги на Авито">
+<meta property="og:description" content="Проверю спрос на ваши услуги на Авито и честно скажу, будут ли заявки. Кейсы с цифрами из кабинета.">
 <meta property="og:url" content="https://prostoavitolog.ru/">
 <meta property="og:image" content="https://prostoavitolog.ru/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Даниил Ионов — авитолог">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Авитолог. Узнайте за 0&nbsp;₽, будут ли у вас заявки">
-<meta name="twitter:description" content="Бесплатно разберу вашу нишу и честно скажу, будут ли заявки с Авито. Кейсы с цифрами из кабинета.">
+<meta name="twitter:title" content="Авитолог Даниил Ионов — проверю спрос на ваши услуги на Авито">
+<meta name="twitter:description" content="Проверю спрос на ваши услуги на Авито и честно скажу, будут ли заявки. Кейсы с цифрами из кабинета.">
 <meta name="twitter:image" content="https://prostoavitolog.ru/assets/og-image.jpg">
 <link rel="icon" type="image/png" sizes="120x120" href="https://prostoavitolog.ru/favicon.png">
 <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="https://prostoavitolog.ru/favicon.ico">
@@ -2500,6 +2500,9 @@
     /* ===== Первый экран: подпись-пилюля «Написать для консультации», под ней прозрачные кнопки Telegram и MAX ===== */
     .hero-actions.hero-z { display: block; width: min(100%, 470px); margin: 10px 0 0; padding: 0; }
     .hz-cap { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 14px; padding: 8px 15px 8px 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: #fff; background: rgba(255,255,255,.06); font-size: .92rem; font-weight: 800; }
+    a.hz-cap { text-decoration: none; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+    a.hz-cap:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.34); }
+    a.hz-cap:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
     .hz-cap i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px rgba(37,224,124,.8); }
     .hz-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
     .hz-b { --hc: 42,171,238; --hc2: 150,225,255; position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; gap: 10px; min-width: 0; height: 56px; padding: 0 18px 0 12px; border-radius: 999px;
@@ -2627,9 +2630,9 @@
         <div class="hero-copy">
           <h1 id="hero-title">Не каждому бизнесу нужен <span class="hero-accent">авитолог</span></h1>
           <p class="hero-lead">Если площадка вам не подходит, говорю сразу.</p>
-          <p class="hero-sub">Разберу вашу нишу и оценю потенциал до старта работ.</p>
+          <p class="hero-sub">До старта проверю спрос в вашей нише и городе.</p>
           <div class="hero-actions hero-z">
-            <p class="hz-cap"><i aria-hidden="true"></i>Написать для консультации</p>
+            <a href="#quiz" class="hz-cap" data-goal="quiz" data-place="hero"><i aria-hidden="true"></i>Проверить спрос за 1 минуту ↓</a>
             <div class="hz-row">
               <a class="hz-b tg" href="https://t.me/dispae" data-goal="tg" data-place="hero" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><span class="hz-ic"><img src="assets/img/icon-telegram-a0fe0.webp" width="96" height="96" alt=""></span><span class="hz-lbl">Telegram</span><svg class="hz-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></a>
               <a class="hz-b mx" href="https://max.ru/u/f9LHodD0cOKnIp9qTBS2_00OqzcKNgsxMSDktgqV9j1XRqrDAT5f9fDpPKs" data-goal="max" data-place="hero" target="_blank" rel="noopener noreferrer" aria-label="Написать в MAX"><span class="hz-ic"><img src="assets/img/icon-max-75523.webp" width="96" height="96" alt=""></span><span class="hz-lbl">MAX</span><svg class="hz-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></a>
@@ -3149,6 +3152,18 @@
         if (goal === 'channel_click') return; // её считает скрипт в конце страницы — без дубля
         window.trackGoal(goal, { place: a.getAttribute('data-place') || '' });
       }, true);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var cap = document.querySelector('a.hz-cap[href="#quiz"]');
+      var quiz = document.getElementById('quiz');
+      if (!cap || !quiz) return;
+      cap.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        quiz.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
     })();
   </script>
 
