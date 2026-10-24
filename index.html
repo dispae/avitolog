@@ -427,16 +427,18 @@
     .section { padding: 110px 0; }
     .quiz-section { color: #fff; }
     .cm-cta { margin-top: 36px; }
-    .cm-cta-card { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 760px; margin-inline: auto; padding: 32px 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 24px; background: rgba(255,255,255,.045); box-shadow: 0 18px 50px rgba(2,7,16,.35); text-align: center; }
-    .cm-cta-text { display: grid; gap: 6px; margin: 0; color: rgba(255,255,255,.72); font-size: 1rem; }
-    .cm-cta-text strong { color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: -.02em; }
+    .cm-cta-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; max-width: 760px; margin-inline: auto; padding: 38px 32px; border: 1px solid rgba(37,224,124,.3); border-radius: 28px; background: radial-gradient(ellipse 70% 120% at 50% 0, rgba(37,224,124,.16), transparent 70%), linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); box-shadow: 0 24px 70px rgba(2,7,16,.45), inset 0 1px 0 rgba(255,255,255,.08); text-align: center; }
+    .cm-cta-text { display: grid; gap: 8px; margin: 0; color: rgba(255,255,255,.72); font-size: 1.02rem; }
+    .cm-cta-text strong { color: #fff; font-size: clamp(1.45rem, 3vw, 1.9rem); font-weight: 950; letter-spacing: -.03em; line-height: 1.15; }
+    .cm-section .nl { text-align: center; }
+    .cm-section .nl-dd { max-width: 760px; margin-inline: auto; }
+    .cm-section .nl-list { justify-content: center; }
     a.cm-cta-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #25e07c; color: #08111d; font-size: 1rem; font-weight: 900; text-decoration: none; box-shadow: 0 10px 30px rgba(37,224,124,.38); transition: transform .2s ease, box-shadow .2s ease; }
     a.cm-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(37,224,124,.5); }
     a.cm-cta-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
     @media (max-width: 680px) {
       .cm-cta { margin-top: 28px; }
-      .cm-cta-card { align-items: stretch; gap: 16px; padding: 22px 18px; border-radius: 20px; }
-      .cm-cta-text strong { font-size: 1.15rem; }
+      .cm-cta-card { align-items: stretch; gap: 18px; padding: 26px 18px; border-radius: 22px; }
     }
     .quiz-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
     .quiz-note { margin: 0; color: rgba(255,255,255,.62); font-size: .9rem; }
@@ -2782,6 +2784,12 @@
       </div>
         <button class="cm-arrow cm-next" type="button" aria-label="Прокрутить кейсы вперёд" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="container cm-cta" data-reveal>
+        <div class="cm-cta-card">
+          <p class="cm-cta-text"><strong>Хотите такие же результаты?</strong><span>Проверю спрос в вашей нише и честно скажу, будут ли заявки.</span></p>
+          <a class="cm-cta-btn" href="#quiz" data-goal="quiz" data-place="cases" data-quiz-open>Проверить спрос за 1 минуту</a>
+        </div>
+      </div>
       <div class="container nl" data-reveal>
         <details class="nl-dd">
           <summary class="nl-btn"><svg class="nl-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></svg><span class="nl-t">Кейсы по вашей нише</span><span class="nl-cnt">4</span><svg class="nl-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -2792,12 +2800,6 @@
           <a class="nl-chip" href="/vyvoz-musora/">Вывоз мусора<span class="nl-n">2</span></a>
           </div>
         </details>
-      </div>
-      <div class="container cm-cta" data-reveal>
-        <div class="cm-cta-card">
-          <p class="cm-cta-text"><strong>Хотите такие же результаты?</strong><span>Проверю спрос в вашей нише и честно скажу, будут ли заявки.</span></p>
-          <a class="cm-cta-btn" href="#quiz" data-goal="quiz" data-place="cases" data-quiz-open>Проверить спрос за 1 минуту</a>
-        </div>
       </div>
     </section>
 
